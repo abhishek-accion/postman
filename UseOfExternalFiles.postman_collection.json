@@ -1,0 +1,33 @@
+{
+	"info": {
+		"_postman_id": "ae7dc44e-ef91-4f9c-bfac-41bc57ae21e7",
+		"name": "UseOfExternalFiles",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39477016"
+	},
+	"item": [
+		{
+			"name": "GetUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.agify.io?name={{name}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"agify",
+						"io"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "{{name}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

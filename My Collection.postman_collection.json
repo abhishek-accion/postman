@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "c3d63b70-9d0f-466b-baa3-95513d06e0cf",
+		"name": "My Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39477016"
+	},
+	"item": [
+		{
+			"name": "GetUsers",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response has the required fields\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('array');\r",
+							"    responseData.forEach(function(user) {\r",
+							"        pm.expect(user).to.include.all.keys('id', 'name', 'company', 'username', 'email', 'address', 'zip', 'state', 'country', 'phone', 'photo');\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/users ",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users "
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCompanies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://fake-json-api.mock.beeceptor.com/companies",
+					"protocol": "https",
+					"host": [
+						"fake-json-api",
+						"mock",
+						"beeceptor",
+						"com"
+					],
+					"path": [
+						"companies"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
