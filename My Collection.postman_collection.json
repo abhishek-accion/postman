@@ -105,7 +105,7 @@
 	"variable": [
 		{
 			"key": "URL",
-			"value": "",
+			"value": "https://fake-json-api.mock.beeceptor.com",
 			"type": "default"
 		}
 	]
