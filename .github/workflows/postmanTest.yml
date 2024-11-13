@@ -2,30 +2,28 @@ name: Automated API tests using Newman CLI
 on: workflow_dispatch
 
 jobs:
-test-api:
-runs-on: ubuntu-latest 
-
-steps:
-
-# Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-⁃ ﻿﻿uses: actions/checkout@v3
-⁃ ﻿﻿name: Create dir 
-run: |
-mkdir TestArtifact
-
-# Install Node on the runner
-- name: Install Node
-uses: actions/setup-node@v3 
-with:
-node-version: '16.x'
-
-# Install newman globally, the reporter for slack and install the html extra reporter
-- name: Install newman
-run: |
- npm install -g newman
- npm install -g newman-reporter-slackreporter 
- npm install -g newman-reporter-htmlextra
-
-# Run the POSTMAN collection
-- name: Run Tests
-run: newman run run "My Collection.postman_collection.json" -r cli
+ test-api:
+  runs-on: ubuntu-latest 
+  steps:
+  # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+   - uses: actions/checkout@v3
+   - name: Create dir 
+     run: | 
+        mkdir TestArtifact
+  
+  # Install Node on the runner
+   - name: Install Node
+     uses: actions/setup-node@v3 
+     with:
+      node-version: '16.x'
+  
+  # Install newman globally, the reporter for slack and install the html extra reporter
+   - name: Install newman
+     run: |
+      npm install -g newman
+      npm install -g newman-reporter-slackreporter 
+      npm install -g newman-reporter-htmlextra
+  
+  # Run the POSTMAN collection
+   - name: Run Tests
+     run: newman run run "My Collection.postman_collection.json" -r cli
