@@ -30,10 +30,16 @@ jobs:
   # Install newman globally, the reporter for slack and install the html extra reporter
    - name: Install newman
      run: |
-      npm install -g newman
-      npm install -g newman-reporter-slackreporter 
+      npm install -g newman      
       npm install -g newman-reporter-htmlextra
   
   # Run the POSTMAN collection
    - name: Run Tests
-     run: newman run "My Collection.postman_collection.json"
+     run: newman run "My Collection.postman_collection.json",htmlextra --reporter-htmlextra-export testArtifacts/htmlreport.html
+
+  # Upload the reports to TestArtifacts directory
+    name: Output the results 
+          uses: actions/upload-artifact@v3 
+          with:
+              name: Reports path: testArtifacts
+         
