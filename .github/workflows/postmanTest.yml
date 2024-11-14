@@ -35,7 +35,7 @@ jobs:
   
   # Run the POSTMAN collection
    - name: Run Tests
-     run: newman run "My Collection.postman_collection.json", htmlextra --reporter-htmlextra-export testArtifacts/htmlreport.html
+     run: newman run "My Collection.postman_collection.json" -r cli, htmlextra --reporter-htmlextra-export testArtifacts/htmlreport.html
     # Upload the reports to TestArtifacts directory
    - name: Output the results 
      uses: actions/upload-artifact@v3 
