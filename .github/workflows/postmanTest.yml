@@ -36,4 +36,4 @@ jobs:
   
   # Run the POSTMAN collection
    - name: Run Tests
-     run: newman run "My Collection.postman_collection.json" -r cli
+     run: newman run "My Collection.postman_collection.json"
