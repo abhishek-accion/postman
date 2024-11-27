@@ -16,10 +16,7 @@ jobs:
   runs-on: ubuntu-latest 
   steps:
   # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-   - uses: actions/checkout@v3
-   - name: Create dir 
-     run: | 
-        mkdir TestArtifact
+   - uses: actions/checkout@v3   
   
   # Install Node on the runner
    - name: Install Node
@@ -30,16 +27,11 @@ jobs:
   # Install newman globally, the reporter for slack and install the html extra reporter
    - name: Install newman
      run: |
-      npm install -g newman      
-      npm install -g newman-reporter-htmlextra
+      npm install -g newman            
   
   # Run the POSTMAN collection
    - name: Run Tests
-     run: newman run "My Collection.postman_collection.json" -r cli,htmlextra --reporter-htmlextra-export testArtifact/htmlreport.html
+     run: newman run "My Collection.postman_collection.json" -r cli
     # Upload the reports to TestArtifacts directory
-   - name: Output the results 
-     uses: actions/upload-artifact@v3 
-     with:
-          name: Reports 
-          path: testArtifact
+   
          
